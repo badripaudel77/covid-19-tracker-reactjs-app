@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 
 import {Box} from './components/box/Box';
 import {Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/core';
@@ -50,8 +50,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* {console.log(countryInfo)} */}
-      {/* {console.log(tableData)} */}
       <div className="app__container__left">  
             {/* header */} 
             <div className="app_header">
@@ -81,11 +79,11 @@ function App() {
         <CardContent>
           <div className="table">
              <Table tableData= {tableData}/>
-          </div>
-          <div className="graph">
-            <BarChart />
-          </div>          
+          </div>         
         </CardContent>
+        <div className="graph">
+              <BarChart />
+        </div> 
       </Card>
     </div>
   );

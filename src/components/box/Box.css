@@ -2,4 +2,5 @@
   text-align: center;
   margin : 7px;
   box-shadow: 3px 3px 3px gray !important;
+  /* min-width: 100px; */
 }
