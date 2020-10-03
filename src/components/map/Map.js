@@ -7,8 +7,7 @@ import './Map.css';
 //leaflet docs : https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/simple.js
 
 const Map = ({mapCountries, caseType, center, zoom})=> {
-     console.log(center)
-    // console.log(center.lat, center.lng)
+    //  console.log(center)
     return (
         <div className="map">
             <LeafletMap 

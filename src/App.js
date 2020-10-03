@@ -19,6 +19,7 @@ function App() {
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState({lat : 51.505, lng : -0.09});
   const [mapZoom, setMapZoom] = useState(2);
+ const [caseTypes, setCaseTypes] = useState('cases');
 
   //first time when app loads
   useEffect(() => {
@@ -78,15 +79,15 @@ function App() {
                   </FormControl>
             </div>
             <div className="app__casesBox">
-                <Box title="Cases" cases= {countryInfo.todayCases} total = {countryInfo.cases} />   
-                <Box title="Recovered" cases= {countryInfo.todayRecovered} total = {countryInfo.recovered}/>   
-                <Box title="Deaths" cases= {countryInfo.todayDeaths} total = {countryInfo.deaths} />   
+                  <Box onClick={e => setCaseTypes('cases')} title="Cases" cases= {countryInfo.todayCases} total = {countryInfo.cases} />   
+                  <Box onClick={e => setCaseTypes('recovered')} title="Recovered" cases= {countryInfo.todayRecovered} total = {countryInfo.recovered}/>   
+                  <Box onClick={e => setCaseTypes('deaths')} title="Deaths" cases= {countryInfo.todayDeaths} total = {countryInfo.deaths} />   
             </div>
             <Map 
                center = {mapCenter}
                zoom = {mapZoom}
                mapCountries = {countries}
-               caseType = 'cases'
+               caseType = {caseTypes}
             />
       </div>
       <Card className="app__container__right">
