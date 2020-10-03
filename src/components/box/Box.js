@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from '@material-ui/core';
 import React from 'react';
 import CountUp from 'react-countup';
-import numeral from 'numeral';
+// import numeral from 'numeral';
 
 import './Box.css';
 

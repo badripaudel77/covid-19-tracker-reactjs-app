@@ -79,9 +79,9 @@ function App() {
                   </FormControl>
             </div>
             <div className="app__casesBox">
-                  <Box onClick={e => setCaseTypes('cases')} title="Cases" cases= {countryInfo.todayCases} total = {countryInfo.cases} />   
-                  <Box onClick={e => setCaseTypes('recovered')} title="Recovered" cases= {countryInfo.todayRecovered} total = {countryInfo.recovered}/>   
-                  <Box onClick={e => setCaseTypes('deaths')} title="Deaths" cases= {countryInfo.todayDeaths} total = {countryInfo.deaths} />   
+                  <Box onClick={() => setCaseTypes('cases')} title="Cases" cases= {countryInfo.todayCases} total = {countryInfo.cases} />   
+                  <Box onClick={() => setCaseTypes('recovered')} title="Recovered" cases= {countryInfo.todayRecovered} total = {countryInfo.recovered}/>   
+                  <Box onClick={() => setCaseTypes('deaths')} title="Deaths" cases= {countryInfo.todayDeaths} total = {countryInfo.deaths} />   
             </div>
             <Map 
                center = {mapCenter}
@@ -91,14 +91,16 @@ function App() {
             />
       </div>
       <Card className="app__container__right">
-        <CardContent>
-          <div className="table">
-             <Table tableData= {tableData}/>
+          <div className="app__table">
+              <CardContent>
+                  <Table tableData= {tableData}/>
+              </CardContent>
           </div>         
-        </CardContent>
-        <div className="graph">
-              <BarChart countryInfo = {countryInfo}/>
-        </div> 
+            <div className="app__graph">
+                  <CardContent>
+                      <BarChart countryInfo = {countryInfo}/>
+                  </CardContent>
+            </div> 
       </Card>
     </div>
   );

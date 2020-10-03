@@ -1,5 +1,4 @@
 .barchart {
-    border : 2px solid grey;
-    /* margin : 3px; */
-    height : 100%;
+    flex-grow: 1;
+    /* background-color: red; */
 }
