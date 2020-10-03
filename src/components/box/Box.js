@@ -9,7 +9,7 @@ export const Box = ({title, cases, total,}) => {
  if(total) {
     return (
         <Card className="box">
-            <CardContent>
+            <CardContent className="box__content">
                 {/* <CountUp duration = {1} end ={cases} /> */}
                  <Typography color="textSecondary">{title}</Typography>
                  <Typography><span>Today +</span><b><CountUp end={cases} duration={1} /></b></Typography>

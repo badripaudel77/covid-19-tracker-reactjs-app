@@ -1,17 +1,19 @@
 import React, {useState,useEffect} from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 import axios from '../../api/axios';
 
 import './BarChart.css';
 
-const BarChart = () => {
+const BarChart = ({countryInfo}) => {
+  
+  console.log(countryInfo)
+  // can be destructured like this : ({countryInfo : { country, cases, recovered, active, deaths, tests }})
+    const { country, cases, recovered, active, deaths, testsPerOneMillion } = countryInfo;
+   
      const [chartData, setChartData] = useState([]);
-
      useEffect(() => {
         const fetchChartData = async () => {
-            // const response = await axios.get('/countries');
             const response = await axios.get('/continents');
-            console.log('chartdata ' ,response.data)
             setChartData(response.data);
         }
         fetchChartData();  
@@ -56,7 +58,7 @@ const BarChart = () => {
           options = {{
                 title: {
                 display:true,
-                text:'Continents Highlight Cases',
+                text:'Highlight Cases',
                 fontSize:20
             },
                 legend: {
@@ -66,10 +68,30 @@ const BarChart = () => {
           }}
         />
 
+    const barchart = cases && <Bar 
+            data= {{
+                   labels : ['Cases', 'Recovered', 'Active', 'Deaths', 'Tests Per Million'],
+                   datasets : [{
+                     label : 'People',
+                     backgroundColor : ['pink', 'green', 'blue', 'red', 'yellow'],
+                     data : [cases, recovered, active, deaths, testsPerOneMillion],
+                   }]
+            }}
+          
+            options={{ 
+              legend : { display : false },
+              title : { display : true, text : `Highlight Cases in ${country}`}
+             }}
+      />
+
     return (
         <div className="barchart">
-        {/* {console.log('setchartdata   ' ,chartData)} */}
-         {chart}
+          { country && console.log(country, '=> ', cases) }
+          
+          {
+            country ? barchart : chart
+          }
+            {/* {chart} */}
         </div>
     )
 }

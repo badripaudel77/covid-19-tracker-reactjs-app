@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {Box} from './components/box/Box';
 import {Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/core';
@@ -82,7 +82,7 @@ function App() {
           </div>         
         </CardContent>
         <div className="graph">
-              <BarChart />
+              <BarChart countryInfo = {countryInfo}/>
         </div> 
       </Card>
     </div>
