@@ -47,17 +47,22 @@ function App() {
        '/all' : `/countries/${selectedCountry}`
       // console.log('url ............ ',url);
       const response = await axios.get(url);
-      // console.log(response.data, ' response ')
+      // console.log(response.data.countryInfo, ' on country change response ') grab lattitude and longitude
       setCountry(selectedCountry);
       setCountryInfo(response.data);
+      setMapCenter({lat :response.data.countryInfo.lat, lng: response.data.countryInfo.long})
+      setMapZoom(5)
     }
 
   return (
     <div className="app">
+      {/* {console.log(countries)} // array */}
       <div className="app__container__left">  
             {/* header */} 
             <div className="app_header">
-                  <h2>Covid-19 Tracker</h2>
+                  <img 
+                  className="app_header__image"
+                  src="https://www.euro.who.int/__data/assets/image/0005/436640/coronavirus-COVID-19-WHO-Europe_250x.png" alt="Not loaded " />
                   {/* dropdown */}
                   <FormControl className="app__dropdown">
                       <Select variant="outlined"
@@ -80,6 +85,8 @@ function App() {
             <Map 
                center = {mapCenter}
                zoom = {mapZoom}
+               mapCountries = {countries}
+               caseType = 'cases'
             />
       </div>
       <Card className="app__container__right">

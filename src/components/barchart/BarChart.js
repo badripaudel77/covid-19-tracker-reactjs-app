@@ -5,8 +5,8 @@ import axios from '../../api/axios';
 import './BarChart.css';
 
 const BarChart = ({countryInfo}) => {
-  
-  console.log(countryInfo)
+  // console.log(countryInfo)
+
   // can be destructured like this : ({countryInfo : { country, cases, recovered, active, deaths, tests }})
     const { country, cases, recovered, active, deaths, testsPerOneMillion } = countryInfo;
    
@@ -86,12 +86,10 @@ const BarChart = ({countryInfo}) => {
 
     return (
         <div className="barchart">
-          { country && console.log(country, '=> ', cases) }
-          
-          {
-            country ? barchart : chart
-          }
-            {/* {chart} */}
+          {/* { country && console.log(country, '=> ', cases) } */}
+            {
+              country ? barchart : chart
+            }
         </div>
     )
 }

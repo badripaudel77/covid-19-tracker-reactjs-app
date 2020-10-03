@@ -1,7 +1,12 @@
 .box {
+  flex: 1; /* take as much possible as it can*/ 
   text-align: center;
   margin : 7px;
   box-shadow: 3px 3px 3px gray !important;
+}
+
+.box:not(:last-child) {
+  margin-right: 15px;
 }
 
 @media(max-width : 992) {
