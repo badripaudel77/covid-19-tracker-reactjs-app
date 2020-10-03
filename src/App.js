@@ -10,11 +10,15 @@ import  {Table}  from './components/table/Table';
 import BarChart from './components/barchart/BarChart';
 import { sortData } from './utils/util';
 
+import 'leaflet/dist/leaflet.css';
+
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState(['worldwide']);
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({lat : 51.505, lng : -0.09});
+  const [mapZoom, setMapZoom] = useState(2);
 
   //first time when app loads
   useEffect(() => {
@@ -73,7 +77,10 @@ function App() {
                 <Box title="Recovered" cases= {countryInfo.todayRecovered} total = {countryInfo.recovered}/>   
                 <Box title="Deaths" cases= {countryInfo.todayDeaths} total = {countryInfo.deaths} />   
             </div>
-            <Map />
+            <Map 
+               center = {mapCenter}
+               zoom = {mapZoom}
+            />
       </div>
       <Card className="app__container__right">
         <CardContent>
