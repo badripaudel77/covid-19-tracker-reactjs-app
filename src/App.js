@@ -51,7 +51,15 @@ function App() {
       // console.log(response.data.countryInfo, ' on country change response ') grab lattitude and longitude
       setCountry(selectedCountry);
       setCountryInfo(response.data);
-      setMapCenter({lat :response.data.countryInfo.lat, lng: response.data.countryInfo.long})
+      
+      if(response.data.country) {
+        console.log('response ', response.data.country)
+        setMapCenter({lat :response.data.countryInfo.lat, lng: response.data.countryInfo.long})
+      }
+      else {
+        console.log('oops')
+        setMapCenter({lat : 51.505, lng : -0.09})
+      }
       setMapZoom(5)
     }
 
